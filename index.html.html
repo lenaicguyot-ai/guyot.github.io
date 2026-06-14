@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GUYOT Lénaïc | Portfolio BTS SIO SISR</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#000;
+  --off-black:#0a0a0a;
+  --surface:#111;
+  --surface2:#181818;
+  --border:rgba(255,255,255,.1);
+  --white:#fff;
+  --muted:#888;
+  --accent:#e8ff47;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+}
+#canvas-bg{position:fixed;inset:0;z-index:-1;opacity:.35}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 7%;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Space Mono',monospace;
+  font-size:.85rem;letter-spacing:.12em;color:var(--accent);
+}
+.nav-links a{
+  color:var(--muted);text-decoration:none;margin-left:28px;
+  font-size:.875rem;font-weight:500;letter-spacing:.04em;transition:color .2s;
+}
+.nav-links a:hover{color:var(--white)}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:0 7%;padding-top:80px;position:relative;
+}
+.hero-inner{max-width:900px}
+.hero-eyebrow{
+  font-family:'Space Mono',monospace;font-size:.75rem;
+  letter-spacing:.2em;color:var(--accent);text-transform:uppercase;
+  margin-bottom:28px;display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{
+  content:'';display:inline-block;width:36px;height:1px;background:var(--accent);
+}
+.hero h1{
+  font-size:clamp(3.5rem,9vw,7.5rem);font-weight:700;
+  line-height:.92;letter-spacing:-.02em;margin-bottom:32px;
+}
+.hero h1 span{
+  display:block;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.3);
+}
+.hero-desc{
+  max-width:560px;color:var(--muted);font-size:1.05rem;
+  line-height:1.7;margin-bottom:44px;
+}
+.hero-desc strong{color:var(--white)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;background:var(--accent);color:#000;
+  text-decoration:none;border-radius:6px;font-weight:600;
+  font-size:.9rem;letter-spacing:.02em;transition:.25s;
+}
+.btn-primary:hover{background:#d4eb30;transform:translateY(-2px)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;border:1px solid var(--border);
+  color:var(--white);text-decoration:none;border-radius:6px;
+  font-weight:500;font-size:.9rem;transition:.25s;
+}
+.btn-secondary:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
+.hero-scroll{
+  position:absolute;bottom:40px;left:7%;
+  font-family:'Space Mono',monospace;font-size:.7rem;
+  letter-spacing:.15em;color:var(--muted);
+  display:flex;align-items:center;gap:12px;
+}
+.hero-scroll::after{
+  content:'';display:block;width:60px;height:1px;background:var(--muted);
+  animation:scrollline 2s ease-in-out infinite;
+}
+@keyframes scrollline{0%,100%{width:60px;opacity:.5}50%{width:100px;opacity:1}}
+
+/* SECTIONS */
+section{padding:100px 7%}
+.section-label{
+  font-family:'Space Mono',monospace;font-size:.7rem;
+  letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;
+}
+.section-title{
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  letter-spacing:-.02em;margin-bottom:50px;line-height:1.1;
+}
+
+/* ABOUT */
+#about{border-top:1px solid var(--border)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}.nav-links{display:none}}
+.about-text p{color:var(--muted);line-height:1.8;font-size:1rem;margin-bottom:18px}
+.about-text p strong{color:var(--white)}
+.info-blocks{display:flex;flex-direction:column;gap:16px}
+.info-block{
+  padding:22px 24px;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;position:relative;overflow:hidden;transition:.3s;
+}
+.info-block:hover{border-color:rgba(255,255,255,.25);transform:translateX(6px)}
+.info-block::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--accent);
+}
+.info-block h4{
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-family:'Space Mono',monospace;margin-bottom:6px;
+}
+.info-block p{color:var(--white);font-size:.95rem;font-weight:500;margin-bottom:4px}
+.info-block span{color:var(--muted);font-size:.82rem;line-height:1.6}
+
+/* SKILLS */
+#skills{border-top:1px solid var(--border); background:var(--off-black);}
+.skills-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.skill-category h4{
+  font-family:'Space Mono',monospace;font-size:.7rem;
+  letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;
+}
+.skill-pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{
+  padding:10px 20px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;font-size:.9rem;font-weight:500;transition:.2s;
+}
+.pill:hover{border-color:rgba(232,255,71,.3);background:var(--surface);color:var(--accent)}
+
+/* PROJECTS & VEILLE */
+#projects{border-top:1px solid var(--border)}
+#veille{background:var(--off-black); border-top:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+
+/* Cartes cliquables */
+.project-card, .clickable-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:32px;transition:.3s;position:relative;overflow:hidden;
+  cursor: pointer;
+}
+.project-card::after, .clickable-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(232,255,71,.04),transparent);
+  opacity:0;transition:.3s;
+}
+.project-card:hover, .clickable-card:hover{transform:translateY(-6px);border-color:rgba(232,255,71,.25)}
+.project-card:hover::after, .clickable-card:hover::after{opacity:1}
+.project-icon{font-size:2rem;margin-bottom:18px;display:block}
+.project-card h3, .clickable-card h3{font-size:1.1rem;font-weight:600;margin-bottom:10px}
+.project-card p, .clickable-card p{color:var(--muted);font-size:.875rem;line-height:1.7}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.project-tag{
+  display:inline-block;padding:4px 12px;
+  background:rgba(232,255,71,.08);border:1px solid rgba(232,255,71,.2);
+  border-radius:4px;font-family:'Space Mono',monospace;
+  font-size:.68rem;color:var(--accent);letter-spacing:.06em;
+}
+.click-hint {
+  display: block; font-family: 'Space Mono', monospace; font-size: 0.65rem; 
+  color: var(--accent); margin-top: 14px; opacity: 0.7;
+}
+
+/* SYSTEME MODALES (FENEETRES EN SAVOIR PLUS) */
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85); 
+  backdrop-filter: blur(10px); z-index: 1000; display: none; 
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal.active { display: flex; }
+.modal-content {
+  background: var(--surface2); border: 1px solid var(--border); 
+  padding: 40px; border-radius: 16px; max-width: 650px; width: 100%;
+  max-height: 85vh; overflow-y: auto; position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.close-modal {
+  position: absolute; top: 20px; right: 20px; background: none; 
+  border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; transition: color 0.2s;
+}
+.close-modal:hover { color: var(--white); }
+.modal-icon { font-size: 2.5rem; margin-bottom: 15px; display:block; }
+.modal-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--white); }
+.modal-subtitle { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; }
+.modal-body { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+.modal-body strong { color: var(--white); }
+.modal-body ul { margin-left: 20px; margin-top: 10px; margin-bottom: 15px; }
+.modal-body li { margin-bottom: 8px; }
+.source-link { 
+  display: inline-block; margin-top: 15px; padding: 8px 16px; 
+  background: rgba(232,255,71,0.1); border: 1px solid rgba(232,255,71,0.3);
+  color: var(--accent); text-decoration: none; border-radius: 4px; font-size: 0.85rem; font-family: 'Space Mono', monospace;
+}
+.source-link:hover { background: var(--accent); color: #000; }
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border);text-align:center}
+.contact-inner{max-width:600px;margin:0 auto}
+.contact-inner p{color:var(--muted);margin-bottom:36px;line-height:1.7}
+.contact-links{
+  display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;
+}
+.contact-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Space Mono',monospace;font-size:1.1rem;
+  color:var(--white);text-decoration:none;
+  border-bottom:1px solid var(--border);padding-bottom:4px;transition:.2s;
+}
+.contact-link:hover{color:var(--accent);border-color:var(--accent)}
+
+/* FOOTER */
+footer{
+  padding:28px 7%;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  background:var(--off-black);
+}
+footer p{color:var(--muted);font-size:.8rem;font-family:'Space Mono',monospace}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<canvas id="canvas-bg"></canvas>
+
+<nav>
+  <span class="nav-logo">GUYOT.L — SISR opt. SIO</span>
+  <div class="nav-links">
+    <a href="#about">À propos</a>
+    <a href="#skills">Compétences</a>
+    <a href="#projects">Projets</a>
+    <a href="#veille">Veille</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">BTS SISR option SIO — Alternance 2025/2026</div>
+    <h1>
+      GUYOT
+      <span>Lénaïc</span>
+    </h1>
+    <p class="hero-desc">
+      Étudiant en alternance passionné par les <strong>systèmes, les réseaux et la cybersécurité</strong>.<br>
+      En formation à <strong>H3 Hitema</strong>, en poste chez <strong>WAAT</strong>.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">Voir mes projets →</a>
+      <a href="#contact" class="btn-secondary">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<section id="about">
+  <div class="section-label reveal">Qui suis-je</div>
+  <h2 class="section-title reveal">À propos</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        Je m'appelle <strong>GUYOT Lénaïc</strong>, étudiant en <strong>BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux). Ma formation allie théorie et pratique grâce à l'alternance, me permettant d'acquérir des compétences concrètes en administration systèmes, réseau et cybersécurité.
+      </p>
+      <p>
+        Mon objectif : évoluer vers un poste d'<strong>administrateur systèmes et réseaux</strong>.
+      </p>
+    </div>
+    <div class="info-blocks reveal">
+      <div class="info-block">
+        <h4>École</h4>
+        <p>H3 Hitema</p>
+        <span>Grande école du digital et du management basée à Paris. Propose des formations en alternance à forte orientation professionnelle.</span>
+      </div>
+      <div class="info-block">
+        <h4>Entreprise</h4>
+        <p>WAAT</p>
+        <span>Opérateur français de bornes de recharge pour véhicules électriques, actif dans les environnements privés, tertiaires et sociaux.</span>
+      </div>
+      <div class="info-block">
+        <h4>Formation actuel</h4>
+        <p>BTS SISR — option SIO</p>
+        <span>Bac +2 orienté infrastructures, systèmes et réseaux. Virtualisation, administration, cybersécurité, support et gestion des SI.</span>
+      </div>
+      <div class="info-block">
+        <h4>Diplôme précédent</h4>
+        <p>Bac SN (Systèmes Numériques) — Obtenu</p>
+        <span>Formation axée sur la préparation, l'installation et la maintenance des systèmes interconnectés et des réseaux informatiques.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label reveal">Savoir-faire</div>
+  <h2 class="section-title reveal">Compétences</h2>
+  <div class="skills-grid">
+    <div class="skill-category reveal">
+      <h4>Compétences techniques et relationnelles</h4>
+      <div class="skill-pills">
+        <span class="pill">Autonomie et organisation</span>
+        <span class="pill">Communication avec les utilisateurs</span>
+        <span class="pill">Gestion des tickets</span>
+        <span class="pill">Gestion des utilisateurs et des droits</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label reveal">Réalisations</div>
+  <h2 class="section-title reveal">Projets</h2>
+  <div class="projects-grid">
+
+    <div class="project-card reveal" onclick="openModal('modal-p1')">
+      <span class="project-icon">🗄️</span>
+      <h3>Brassage d'une baie réseau</h3>
+      <p>Intervention sur une baie informatique en salle serveur : brassage des câbles RJ45 et étiquetage.</p>
+      <div class="project-tags">
+        <span class="project-tag">Câblage</span>
+        <span class="project-tag">Brassage</span>
+        <span class="project-tag">Infrastructure</span>
+      </div>
+      <span class="click-hint">[ Cliquer pour voir les détails ]</span>
+    </div>
+
+    <div class="project-card reveal" onclick="openModal('modal-p2')">
+      <span class="project-icon">⚡</span>
+      <h3>Automatisation avec Power Automate</h3>
+      <p>Flux automatisé de bout en bout pour la génération et l'envoi de fiches utilisateurs M365.</p>
+      <div class="project-tags">
+        <span class="project-tag">Power Automate</span>
+        <span class="project-tag">Forms</span>
+        <span class="project-tag">M365</span>
+      </div>
+      <span class="click-hint">[ Cliquer pour voir les détails ]</span>
+    </div>
+
+    <div class="project-card reveal" onclick="openModal('modal-p3')">
+      <span class="project-icon">🛡️</span>
+      <h3>Stratégie Intune — Déploiement</h3>
+      <p>Création d'une stratégie pour déployer la barre des favoris de l'entreprise sur Microsoft Edge.</p>
+      <div class="project-tags">
+        <span class="project-tag">Intune</span>
+        <span class="project-tag">MDM</span>
+        <span class="project-tag">Déploiement</span>
+      </div>
+      <span class="click-hint">[ Cliquer pour voir les détails ]</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="veille">
+  <div class="section-label reveal">Cybersécurité</div>
+  <h2 class="section-title reveal">Veille Technologique</h2>
+  <p class="reveal" style="color:var(--muted); line-height:1.8; font-size:1.05rem; margin-bottom: 40px; max-width: 850px;">
+    Ma veille technologique suit activement les <strong>dernières fuites de données (Data Breaches)</strong> mondiales. Pour cela, j'utilise la plateforme professionnelle <strong>LinkedIn</strong> afin de centraliser et d'analyser en continu les retours d'experts et les alertes de sécurité en temps réel.
+  </p>
+  
+  <div class="projects-grid">
+    <div class="clickable-card reveal" onclick="openModal('modal-v1')">
+      <span class="project-icon">🌐</span>
+      <h3>Sourcing via LinkedIn</h3>
+      <p>Méthodologie de veille et flux d'information sur LinkedIn pour capter les dernières fuites publiées par les experts.</p>
+      <span class="click-hint">[ Cliquer pour voir les détails & sources ]</span>
+    </div>
+    <div class="clickable-card reveal" onclick="openModal('modal-v2')">
+      <span class="project-icon">⚠️</span>
+      <h3>Analyse des Incidents</h3>
+      <p>Étude technique des vecteurs d'attaque récurrents (Scraping, serveurs Cloud non sécurisés, identifiants compromis).</p>
+      <span class="click-hint">[ Cliquer pour voir les détails ]</span>
+    </div>
+    <div class="clickable-card reveal" onclick="openModal('modal-v3')">
+      <span class="project-icon">🔒</span>
+      <h3>Outils de Remédiation</h3>
+      <p>Focus sur les techniques de protection fondamentales et l'audit de comptes via Have I Been Pwned.</p>
+      <span class="click-hint">[ Cliquer pour voir les détails ]</span>
+    </div>
+  </div>
+</section>
+
+<div id="modal-p1" class="modal" onclick="closeModalOnBg(event, 'modal-p1')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-p1')">×</button>
+    <span class="modal-icon">🗄️</span>
+    <h3 class="modal-title">Brassage d'une baie réseau</h3>
+    <div class="modal-subtitle">Infrastructure Réseau & Câblage</div>
+    <div class="modal-body">
+      <p><strong>Objectif technique :</strong> Assurer l'interconnexion réseau des équipements en salle serveur à travers un brassage propre et documenté.</p>
+      <ul>
+        <li><strong>Gestion des liaisons :</strong> Réalisation du brassage des câbles RJ45 entre les switches et les bandeaux de brassage (patch panels).</li>
+        <li><strong>Maintenabilité :</strong> Application d'une charte de repérage stricte avec l'étiquetage systématique de chaque câble pour garantir une lisibilité parfaite de l'infrastructure et faciliter les futurs dépannages.</li>
+      </ul>
+      <p><strong>Compétences validées :</strong> Intervention sur une infrastructure physique, rigueur organisationnelle et documentation réseau.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-p2" class="modal" onclick="closeModalOnBg(event, 'modal-p2')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-p2')">×</button>
+    <span class="modal-icon">⚡</span>
+    <h3 class="modal-title">Automatisation avec Power Automate</h3>
+    <div class="modal-subtitle">Modern Workplace & Gain de temps</div>
+    <div class="modal-body">
+      <p><strong>Conception du flux :</strong></p>
+      <ul>
+        <li><strong>Étape 1 :</strong> Capture des informations via un formulaire structuré <strong>Microsoft Forms</strong>.</li>
+        <li><strong>Étape 2 :</strong> Déclenchement automatique d'un workflow cloud <strong>Power Automate</strong> qui récupère les variables textuelles.</li>
+        <li><strong>Étape 3 :</strong> Remplissage dynamique d'un modèle Word, conversion automatique au format PDF, et envoi par email directement à <strong>l'utilisateur de l'entreprise</strong>.</li>
+        <li><strong>Étape 4 :</strong> Notification instantanée envoyée dans le canal Microsoft Teams de l'équipe informatique pour garantir la traçabilité de l'action.</li>
+      </ul>
+      <p><strong>Résultat :</strong> Une réduction drastique des erreurs de saisie humaine et une intégration fluide au sein du tenant de l'entreprise.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-p3" class="modal" onclick="closeModalOnBg(event, 'modal-p3')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-p3')">×</button>
+    <span class="modal-icon">🛡️</span>
+    <h3 class="modal-title">Stratégie Intune (MDM)</h3>
+    <div class="modal-subtitle">Gestion de parc & Administration Centralisée</div>
+    <div class="modal-body">
+      <p><strong>Objectif d'administration :</strong> Uniformiser l'environnement de travail des utilisateurs distants et sur site en gérant la configuration de leurs postes Windows via le cloud.</p>
+      <ul>
+        <li><strong>Configuration déployée :</strong> Création d'une stratégie dans Intune pour configurer et déployer automatiquement la barre des favoris avec les outils internes de l'entreprise sur le navigateur <strong>Microsoft Edge</strong>.</li>
+        <li><strong>Méthodologie :</strong> Création d'un profil de configuration de périphériques appliqué à des groupes de sécurité dynamiques basés sur Entra ID (Azure AD).</li>
+        <li><strong>Avantages SISR :</strong> Plus besoin d'intervenir manuellement sur chaque ordinateur, application automatisée des stratégies de l'entreprise dès la première connexion de la machine.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="modal-v1" class="modal" onclick="closeModalOnBg(event, 'modal-v1')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-v1')">×</button>
+    <span class="modal-icon">🌐</span>
+    <h3 class="modal-title">Sourcing Cyber via LinkedIn</h3>
+    <div class="modal-subtitle">Méthodologie & Outils de Veille</div>
+    <div class="modal-body">
+      <p>Pour suivre l'actualité brûlante des dernières fuites de données mondiales, j'ai structuré mon fil d'actualité <strong>LinkedIn</strong> pour en faire un véritable centre de veille technologique.</p>
+      <ul>
+        <li><strong>Hashtags clés suivis :</strong> #Cybersécurité, #DataBreach, #CyberNews, #Infosec.</li>
+        <li><strong>Sources et comptes d'experts suivis :</strong> 
+          <br>• Agences officielles (Le compte officiel de la <strong>CNIL</strong> et de l'<strong>ANSSI</strong> pour les alertes en France).
+          <br>• Journalistes et chercheurs reconnus publiant des analyses d'incidents (comme Troy Hunt ou des comptes spécialisés comme *Le Monde Informatique*).
+        </li>
+      </ul>
+      <p><strong>Pourquoi ce choix ?</strong> LinkedIn permet une réactivité immédiate. Dès qu'une base de données est découverte en vente sur un forum cybercriminel, la communauté partage les détails de la faille en quelques minutes.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-v2" class="modal" onclick="closeModalOnBg(event, 'modal-v2')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-v2')">×</button>
+    <span class="modal-icon">⚠️</span>
+    <h3 class="modal-title">Analyse des Incidents</h3>
+    <div class="modal-subtitle">Vecteurs d'attaques & Risques</div>
+    <div class="modal-body">
+      <p>Mes lectures et analyses m'ont permis d'identifier les origines récurrentes des fuites de données actuelles :</p>
+      <ul>
+        <li><strong>Erreurs de configuration :</strong> Des bases de données (ex: instances Elasticsearch ou buckets AWS S3) laissées accessibles publiquement sur Internet sans aucun mot de passe.</li>
+        <li><strong>Le Scraping de données :</strong> Récupération automatisée de données théoriquement publiques mais compilées de façon massive pour créer des fichiers d'utilisateurs hautement exploitables.</li>
+        <li><strong>Impact majeur : Le Spear-Phishing.</strong> Une fois que les attaquants possèdent des listes d'emails avec le nom, le prénom et l'intitulé de poste d'un utilisateur, ils peuvent rédiger des emails d'hameçonnage ultra-crédibles pour usurper des identités professionnelles.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="modal-v3" class="modal" onclick="closeModalOnBg(event, 'modal-v3')">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('modal-v3')">×</button>
+    <span class="modal-icon">🔒</span>
+    <h3 class="modal-title">Outils de Remédiation & d'Audit</h3>
+    <div class="modal-subtitle">Défense en profondeur</div>
+    <div class="modal-body">
+      <p>Dans le cadre d'un profil d'administrateur SISR, l'analyse d'une fuite de données impose des contre-mesures strictes :</p>
+      <ul>
+        <li><strong>Chiffrement :</strong> Obligation de chiffrer les données sensibles au repos (stockage) et en transit (réseau).</li>
+        <li><strong>Audit via Have I Been Pwned :</strong> Utilisation active de l'outil de référence de Troy Hunt pour vérifier si des adresses emails professionnelles sont apparues dans des bases piratées publiques.</li>
+        <li><strong>Politiques d'accès :</strong> Implémentation du protocole MFA (Double authentification) obligatoire et du principe du "Moindre Privilège" (limiter les droits d'accès aux seules données nécessaires pour travailler).</li>
+      </ul>
+      <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener noreferrer" class="source-link">Accéder à Have I Been Pwned →</a>
+    </div>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label reveal" style="justify-content:center;display:flex">Contact</div>
+    <h2 class="section-title reveal">Travaillons ensemble</h2>
+    <p class="reveal">Disponible pour échanger autour de mes projets ou d'une opportunité. N'hésitez pas à me contacter.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:lenaicguyot@gmail.com" class="contact-link">
+        📩 lenaicguyot@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/lénaïc-guyot-9a80b9306?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="contact-link">
+        💼 Profil LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 — GUYOT Lénaïc</p>
+  <p>BTS SISR option SIO · H3 Hitema · WAAT</p>
+</footer>
+
+<script>
+/* CANVAS BG */
+(function(){
+  const c=document.getElementById('canvas-bg');
+  const ctx=c.getContext('2d');
+  let W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  const particles=[];
+  for(let i=0;i<80;i++){
+    particles.push({
+      x:Math.random()*1920,y:Math.random()*1080,
+      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+      r:Math.random()*1.5+.5
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(232,255,71,0.4)';ctx.fill();
+    });
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;
+        const dy=particles[i].y-particles[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<140){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=`rgba(232,255,71,${.12*(1-d/140)})`;
+          ctx.lineWidth=.6;ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* REVEAL */
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);
+  });
+},{threshold:.12});
+reveals.forEach(r=>obs.observe(r));
+
+/* FONCTIONS DES MODALES INTERACTIVES */
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden'; /* Empêche de scroller le fond */
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = ''; /* Réactive le scroll */
+}
+
+function closeModalOnBg(event, id) {
+  /* Ferme la fenêtre si l'utilisateur clique en dehors de la boîte blanche */
+  if (event.target.id === id) {
+    closeModal(id);
+  }
+}
+</script>
+</body>
+</html>
