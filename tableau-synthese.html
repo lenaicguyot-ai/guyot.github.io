@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'"><meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de synthèse | Lénaïc Guyot</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ts-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+    .ts{border-collapse:collapse;width:100%;min-width:980px;font-size:.82rem}
+    .ts th,.ts td{border:1px solid var(--line);padding:8px;vertical-align:top}
+    .ts thead th{background:color-mix(in srgb,var(--accent) 8%,var(--surface));text-align:center}
+    .ts thead th ul{list-style:none;padding:0;margin-top:6px;font-weight:400;font-size:.7rem;text-align:left;color:var(--muted)}
+    .ts thead th li::before{content:"▸ "}
+    .ts .grp td{background:color-mix(in srgb,var(--accent-2) 10%,var(--surface));font-weight:700;text-align:center}
+    .ts td.x{text-align:center;font-weight:700;color:var(--accent);font-size:1rem}
+    .ts td.per{white-space:nowrap;color:var(--muted)}
+    .ts td small{display:block;color:var(--muted)}
+    .ts-head{display:grid;grid-template-columns:1fr auto;gap:4px 24px;margin-bottom:16px;font-size:.92rem}
+    .todo{color:#d9480f}
+    @media print{
+      @page{size:A4 landscape;margin:8mm}
+      .nav,.no-print,footer{display:none!important}
+      body{background:#fff;color:#000;font-size:10px}
+      main{max-width:none;padding:0}
+      section{padding:0}
+      .ts-wrap{overflow:visible;border:0}
+      .ts{min-width:0;font-size:8px}
+      .ts th,.ts td{border-color:#000;padding:3px}
+      .ts thead th{background:#eee}
+      .ts thead th ul,.ts td small{color:#333}
+      .ts td.x{color:#000}
+      .ts .grp td{background:#ddd}
+    }
+  </style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="index.html">LG<span>_</span>SISR</a>
+  <button class="btn" id="print" style="width:auto;height:auto">Imprimer / PDF</button>
+  <a class="btn" href="index.html#projets">← Retour</a>
+</header>
+
+<main>
+<section>
+  <p class="tag">BTS Services informatiques aux organisations · Session 2027 · Épreuve E5</p>
+  <h2 style="margin-bottom:16px">Tableau de synthèse des réalisations professionnelles</h2>
+
+  <div class="ts-head">
+    <div><strong>NOM et prénom :</strong> GUYOT Lénaïc</div>
+    <div><strong>N° candidat :</strong> <span class="todo">[à compléter]</span></div>
+    <div><strong>Centre de formation :</strong> H3 Hitema</div>
+    <div><strong>Option :</strong> ☒ SISR ☐ SLAM</div>
+    <div style="grid-column:1/-1"><strong>Adresse URL du portfolio :</strong> <a href="https://lenaicguyot-ai.github.io/guyot.github.io/">https://lenaicguyot-ai.github.io/guyot.github.io/</a></div>
+  </div>
+
+
+  <div class="ts-wrap">
+  <table class="ts">
+    <thead>
+      <tr>
+        <th style="width:30%">Réalisations professionnelles<br><small style="font-weight:400">(intitulé et liste des documents et productions associés)</small></th>
+        <th style="width:9%">Période<br><small style="font-weight:400">(du JJ/MM/AA au JJ/MM/AA)</small></th>
+        <th>Gérer le patrimoine informatique
+          <ul><li>Recenser et identifier les ressources numériques</li><li>Exploiter des référentiels, normes et standards adoptés par le prestataire informatique</li><li>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li><li>Vérifier les conditions de la continuité d'un service informatique</li><li>Gérer des sauvegardes</li><li>Vérifier le respect des règles d'utilisation des ressources numériques</li></ul></th>
+        <th>Répondre aux incidents et aux demandes d'assistance et d'évolution
+          <ul><li>Collecter, suivre et orienter des demandes</li><li>Traiter des demandes concernant les services réseau et système, applicatifs</li><li>Traiter des demandes concernant les applications</li></ul></th>
+        <th>Développer la présence en ligne de l'organisation
+          <ul><li>Participer à la valorisation de l'image de l'organisation sur les médias numériques en tenant compte du cadre juridique et des enjeux économiques</li><li>Référencer les services en ligne de l'organisation et mesurer leur visibilité</li><li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li></ul></th>
+        <th>Travailler en mode projet
+          <ul><li>Analyser les objectifs et les modalités d'organisation d'un projet</li><li>Planifier les activités</li><li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li></ul></th>
+        <th>Mettre à disposition des utilisateurs un service informatique
+          <ul><li>Réaliser les tests d'intégration et d'acceptation d'un service</li><li>Déployer un service</li><li>Accompagner les utilisateurs dans la mise en place d'un service</li></ul></th>
+        <th>Organiser son développement professionnel
+          <ul><li>Mettre en place son environnement d'apprentissage personnel</li><li>Mettre en œuvre des outils et stratégies de veille informationnelle</li><li>Gérer son identité professionnelle</li><li>Développer son projet professionnel</li></ul></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="grp"><td colspan="8">Réalisations en cours de formation</td></tr>
+      <tr><td>Portfolio en ligne (HTML/CSS/JS, hébergé sur GitHub Pages)<small>Site web, dépôt GitHub</small></td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td class="x">X</td></tr>
+      <tr><td>Veille technologique et juridique : fuites de données et RGPD<small>Fiches de veille, sources</small></td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td class="x">X</td></tr>
+      <tr><td>Gestion de l'identité professionnelle (profil LinkedIn)</td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td class="x">X</td></tr>
+      <tr><td class="todo">[Mission / TP H3 Hitema à compléter, ex. maquette réseau Cisco Packet Tracer]</td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="todo">[Mission / TP H3 Hitema à compléter]</td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+      <tr class="grp"><td colspan="8">Réalisations en milieu professionnel en cours de première année</td></tr>
+      <tr><td>WAAT – Création et gestion des comptes utilisateurs et des droits d'accès (Microsoft Entra ID, Microsoft 365)<small>Procédure de création de compte, captures</small></td><td class="per todo">[dates]</td><td class="x">X</td><td class="x">X</td><td></td><td></td><td class="x">X</td><td></td></tr>
+      <tr><td>WAAT – Collecte, suivi et traitement des demandes d'assistance (GLPI)<small>Extraits de tickets anonymisés</small></td><td class="per todo">[dates]</td><td></td><td class="x">X</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>WAAT – Préparation et déploiement de postes pour les nouveaux salariés (Intune)<small>Procédure de préparation, check-list</small></td><td class="per todo">[dates]</td><td class="x">X</td><td></td><td></td><td></td><td class="x">X</td><td></td></tr>
+      <tr><td>WAAT – Déploiement via Intune d'un script de nettoyage des dossiers temporaires des postes<small>Script, rapport de déploiement</small></td><td class="per todo">[dates]</td><td class="x">X</td><td></td><td></td><td></td><td class="x">X</td><td></td></tr>
+
+      <tr class="grp"><td colspan="8">Réalisations en milieu professionnel en cours de seconde année</td></tr>
+      <tr><td>WAAT – Automatisation d'un processus avec Power Automate et Microsoft Forms<small>Schéma du flux, documentation utilisateur</small></td><td class="per todo">[dates]</td><td></td><td class="x">X</td><td></td><td class="x">X</td><td class="x">X</td><td></td></tr>
+      <tr><td class="todo">[Réalisation 2e année à compléter]</td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="todo">[Réalisation 2e année à compléter]</td><td class="per todo">[dates]</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</main>
+<footer>© 2026 Lénaïc Guyot</footer>
+<script src="script.js"></script>
+</body>
+</html>
