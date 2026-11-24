@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VLAN et routage Cisco | Lénaïc Guyot</title><link rel="stylesheet" href="../style.css">
+<style>pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font:.82rem/1.5 ui-monospace,Consolas,monospace;margin:10px 0}ol.steps{padding-left:20px}ol.steps li{margin-bottom:14px}.todo{color:#d9480f}</style></head>
+<body><header class="nav"><a class="brand" href="../index.html">LG<span>_</span>SISR</a><a class="btn" href="../index.html#atelier">← Retour</a></header>
+<main><section class="hero" style="padding-bottom:0"><p class="tag">Atelier pro · BTS SIO SISR · 2<sup>e</sup> année</p><h1 style="font-size:clamp(2rem,6vw,3.2rem)">VLAN et routage sur équipements Cisco</h1>
+<p class="lead">Segmentation d'un réseau en VLAN et mise en place du routage pour faire communiquer les différents réseaux.</p></section>
+
+<section><h2><span>01</span> Contexte</h2>
+<p>Dans le cadre de l'atelier professionnel du BTS SIO option SISR à H3 Hitema, l'objectif était de concevoir et configurer l'infrastructure réseau d'une organisation sur des équipements Cisco. Un réseau « à plat », où tous les postes sont dans le même réseau, pose des problèmes de sécurité et de performance : on le découpe donc en VLAN, puis on configure le routage pour que les réseaux puissent communiquer.</p></section>
+
+<section><h2><span>02</span> Besoin &amp; cahier des charges</h2>
+<ul class="chips"><li>Séparer les services en VLAN</li><li>Plan d'adressage IP</li><li>Liaisons trunk entre équipements</li><li>Routage entre les VLAN</li><li>Routage entre les réseaux</li></ul>
+<p style="margin-top:12px" class="todo">[À compléter : nombre de VLAN et services concernés, nombre de switchs et de routeurs, Packet Tracer ou matériel réel]</p></section>
+
+<section><h2><span>03</span> Solution mise en œuvre</h2>
+<p class="note">Les numéros de VLAN et les adresses ci-dessous sont des exemples : remplace-les par ceux de ton plan d'adressage.</p>
+<ol class="steps">
+<li><strong>Plan d'adressage :</strong> un sous-réseau par VLAN.
+<pre>VLAN 10  ADMIN   192.168.10.0/24  passerelle 192.168.10.254
+VLAN 20  USERS   192.168.20.0/24  passerelle 192.168.20.254</pre></li>
+<li><strong>Création des VLAN sur le switch</strong> et affectation des ports en mode access :
+<pre>vlan 10
+ name ADMIN
+interface range fa0/1-10
+ switchport mode access
+ switchport access vlan 10</pre></li>
+<li><strong>Liaison trunk (802.1Q)</strong> vers le routeur ou entre les switchs, pour faire passer plusieurs VLAN sur un même câble :
+<pre>interface gi0/1
+ switchport mode trunk</pre></li>
+<li><strong>Routage inter-VLAN</strong> (router-on-a-stick) : une sous-interface par VLAN sur le routeur.
+<pre>interface gi0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.254 255.255.255.0</pre></li>
+<li><strong>Routage entre les routeurs :</strong> routes statiques vers les réseaux distants.
+<pre>ip route 192.168.30.0 255.255.255.0 10.0.0.2</pre></li>
+<li><strong>Tests :</strong> <code>ping</code> entre les postes de VLAN différents, <code>show vlan brief</code>, <code>show ip route</code>, <code>show interfaces trunk</code>.</li>
+</ol>
+<p class="note">[À compléter : schéma de la topologie et captures des tests]</p></section>
+
+<section><h2><span>04</span> Outils &amp; technologies</h2><ul class="chips"><li>Cisco IOS</li><li>Switchs et routeurs Cisco</li><li>VLAN</li><li>Trunk 802.1Q</li><li>Routage inter-VLAN</li><li>Routage statique</li><li>Adressage IPv4</li></ul></section>
+
+<section><h2><span>05</span> Résultat &amp; compétences mobilisées</h2>
+<p>Le réseau est découpé par service, les postes communiquent entre VLAN par le routeur, et les réseaux distants sont joignables grâce aux routes.</p>
+<div class="grid two" style="margin-top:16px">
+<div class="card"><h3>Travailler en mode projet</h3><p>Analyse du besoin, conception du plan d'adressage, configuration étape par étape et validation par des tests.</p></div>
+<div class="card"><h3>Mettre à disposition un service informatique</h3><p>Déploiement d'une infrastructure réseau segmentée et tests de bon fonctionnement.</p></div>
+</div></section>
+
+<section><h2><span>06</span> Documents</h2><p><a href="#" class="todo">[Lien vers le schéma réseau / le fichier de configuration]</a></p></section>
+</main><footer>© 2026 Lénaïc Guyot</footer></body></html>

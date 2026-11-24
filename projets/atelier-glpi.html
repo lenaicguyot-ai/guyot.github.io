@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installation de GLPI | Lénaïc Guyot</title><link rel="stylesheet" href="../style.css">
+<style>pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font:.82rem/1.5 ui-monospace,Consolas,monospace;margin:10px 0}ol.steps{padding-left:20px}ol.steps li{margin-bottom:14px}.todo{color:#d9480f}</style></head>
+<body><header class="nav"><a class="brand" href="../index.html">LG<span>_</span>SISR</a><a class="btn" href="../index.html#atelier">← Retour</a></header>
+<main><section class="hero" style="padding-bottom:0"><p class="tag">Atelier pro · BTS SIO SISR · 2<sup>e</sup> année</p><h1 style="font-size:clamp(2rem,6vw,3.2rem)">Installation de GLPI sur Debian</h1>
+<p class="lead">Mise en place d'un outil de gestion de parc et de helpdesk sur un serveur Linux, avec une pile LAMP (Linux, Apache, MySQL, PHP).</p></section>
+
+<section><h2><span>01</span> Contexte</h2>
+<p>Dans le cadre de l'atelier professionnel du BTS SIO option SISR à H3 Hitema, l'objectif était de déployer un serveur de gestion de parc informatique. GLPI (Gestionnaire Libre de Parc Informatique) est un logiciel libre très utilisé en entreprise pour inventorier le matériel et les logiciels, et pour gérer les demandes d'assistance des utilisateurs (tickets).</p>
+<p>C'est aussi l'outil que j'utilise en alternance chez WAAT pour traiter les demandes : ce projet m'a permis de comprendre comment il fonctionne côté serveur.</p></section>
+
+<section><h2><span>02</span> Besoin &amp; cahier des charges</h2>
+<ul class="chips"><li>Serveur Debian</li><li>Pile LAMP</li><li>Base de données dédiée à GLPI</li><li>Accès à GLPI depuis un navigateur web</li><li>Comptes par défaut sécurisés</li></ul>
+<p style="margin-top:12px">Contraintes : utiliser uniquement des logiciels libres, documenter chaque étape pour pouvoir refaire l'installation.</p></section>
+
+<section><h2><span>03</span> Solution mise en œuvre</h2>
+<ol class="steps">
+<li><strong>Préparation du serveur Debian :</strong> mise à jour du système, adresse IP fixe <span class="todo">[à compléter : version de Debian, IP du serveur]</span>.
+<pre>apt update &amp;&amp; apt upgrade -y</pre></li>
+<li><strong>Installation de la pile LAMP :</strong> serveur web Apache, base de données MySQL (MariaDB, la version fournie par Debian, compatible MySQL) et PHP avec les extensions nécessaires à GLPI.
+<pre>apt install apache2 mariadb-server php libapache2-mod-php \
+  php-mysql php-curl php-gd php-intl php-xml php-mbstring php-zip php-bz2 php-ldap -y</pre></li>
+<li><strong>Sécurisation de la base de données</strong> puis création de la base et de l'utilisateur dédiés à GLPI :
+<pre>mysql_secure_installation
+mysql -u root -p
+CREATE DATABASE glpi;
+CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'motdepasse';
+GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+FLUSH PRIVILEGES;</pre></li>
+<li><strong>Téléchargement de GLPI</strong> depuis le site officiel, décompression dans <code>/var/www/</code> et attribution des droits à l'utilisateur d'Apache :
+<pre>tar -xzf glpi-x.x.x.tgz -C /var/www/
+chown -R www-data:www-data /var/www/glpi</pre></li>
+<li><strong>Configuration d'Apache</strong> pour publier GLPI, puis rechargement du service.</li>
+<li><strong>Installation web :</strong> depuis le navigateur, assistant d'installation de GLPI : vérification des prérequis, connexion à la base de données <code>glpi</code>, création des tables.</li>
+<li><strong>Sécurisation après installation :</strong> changement des mots de passe des comptes par défaut (glpi, tech, normal, post-only) et suppression du fichier d'installation.</li>
+</ol>
+<p class="note">[À compléter : captures d'écran de l'assistant d'installation et de la page d'accueil de GLPI]</p></section>
+
+<section><h2><span>04</span> Outils &amp; technologies</h2><ul class="chips"><li>Debian</li><li>Apache</li><li>MySQL / MariaDB</li><li>PHP</li><li>GLPI</li><li>Ligne de commande Linux</li></ul></section>
+
+<section><h2><span>05</span> Résultat &amp; compétences mobilisées</h2>
+<p>GLPI est accessible depuis un navigateur et prêt à recevoir l'inventaire du parc et les tickets des utilisateurs.</p>
+<div class="grid two" style="margin-top:16px">
+<div class="card"><h3>Gérer le patrimoine informatique</h3><p>Mise en place d'un outil pour recenser et identifier les ressources numériques. Habilitations : gestion des comptes et des profils GLPI.</p></div>
+<div class="card"><h3>Mettre à disposition un service informatique</h3><p>Déploiement d'un service web complet (serveur, base de données, application) et tests de fonctionnement.</p></div>
+</div></section>
+
+<section><h2><span>06</span> Documents</h2><p><a href="#" class="todo">[Lien vers la procédure d'installation en PDF]</a></p></section>
+</main><footer>© 2026 Lénaïc Guyot</footer></body></html>
