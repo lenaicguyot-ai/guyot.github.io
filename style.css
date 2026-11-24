@@ -73,6 +73,12 @@ nav a:hover{color:var(--text)}
 .feed li{padding:10px 0;border-bottom:1px solid var(--line)}
 .feed time{font-family:ui-monospace,Consolas,monospace;color:var(--accent-2);margin-right:8px}
 
+.dlp{margin-top:24px;padding:28px}
+.dlp h3{font-size:1.3rem;margin-bottom:12px}
+.dlp h4{margin:22px 0 6px;font-size:1rem;color:var(--text)}
+.dlp p{margin-top:8px}
+.dlp .chips{margin-top:8px}
+
 footer{margin-top:96px;padding:28px 20px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 
 @media (max-width:780px){
