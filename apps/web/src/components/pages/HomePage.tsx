@@ -9,6 +9,7 @@ import { EcoleSection } from '../organisms/EcoleSection';
 import { EntrepriseSection } from '../organisms/EntrepriseSection';
 import { EpreuvesSection } from '../organisms/EpreuvesSection';
 import { Hero } from '../organisms/Hero';
+import { Sommaire } from '../organisms/Sommaire';
 import { VeilleSection } from '../organisms/VeilleSection';
 
 /** Page d'accueil, dans l'ordre de la trame de l'école : Accueil, Épreuves, Atelier pro, Veille. */
@@ -29,6 +30,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <Sommaire />
       <CandidatSection />
       <BtsSection />
       <EntrepriseSection />
