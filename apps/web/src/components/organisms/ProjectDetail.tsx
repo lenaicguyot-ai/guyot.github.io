@@ -50,7 +50,7 @@ export function ProjectDetail({ projet }: { projet: Projet }) {
                   </p>
                 ))}
               </Panel>
-              <Panel title="Besoin" variant="paper">
+              <Panel title="Besoin">
                 {projet.besoins.length > 1 ? (
                   <TagList items={projet.besoins} />
                 ) : (
@@ -91,7 +91,7 @@ export function ProjectDetail({ projet }: { projet: Projet }) {
           <section>
             <SectionTitle number="03" title="Le résultat" />
             <Reveal stagger className="grid gap-gutter md:grid-cols-2">
-              <Panel title="Résultat" variant="paper" className="md:col-span-2">
+              <Panel title="Résultat" className="md:col-span-2">
                 <p className="text-subtitle text-ink">
                   <RichText text={projet.resultat} />
                 </p>

@@ -44,16 +44,16 @@ export function SynthesisTable() {
           <caption className="sr-only">{enteteSynthese.titre}</caption>
           <thead>
             <tr>
-              <th scope="col" className={`${cellule} w-[28%] bg-paper text-left print:bg-white`}>
+              <th scope="col" className={`${cellule} w-[28%] bg-blush text-left print:bg-white`}>
                 Réalisations professionnelles
                 <span className="block font-normal text-ink-soft">(intitulé et liste des documents et productions associés)</span>
               </th>
-              <th scope="col" className={`${cellule} w-[9%] bg-paper print:bg-white`}>
+              <th scope="col" className={`${cellule} w-[9%] bg-blush print:bg-white`}>
                 Période
                 <span className="block font-normal text-ink-soft">(du JJ/MM/AA au JJ/MM/AA)</span>
               </th>
               {colonnesSynthese.map((c) => (
-                <th key={c.titre} scope="col" className={`${cellule} bg-paper print:bg-white`}>
+                <th key={c.titre} scope="col" className={`${cellule} bg-blush print:bg-white`}>
                   {c.titre}
                   <ul className="mt-2 text-left text-[11px] font-normal text-ink-soft print:text-[7px] print:text-black">
                     {c.items.map((it) => (

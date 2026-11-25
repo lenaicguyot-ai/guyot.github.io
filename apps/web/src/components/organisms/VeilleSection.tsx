@@ -12,7 +12,7 @@ export function VeilleSection() {
   return (
     <SectionLayout id="veille" number="07" title="Veille et RGPD" subtitle="Veille technologique et juridique">
       <Reveal stagger className="grid gap-gutter md:grid-cols-2">
-        <Panel title="Thème" variant="paper">
+        <Panel title="Thème">
           <p className="text-subtitle text-ink">{veille.theme}</p>
         </Panel>
         <Panel title="Sources et méthode">
@@ -63,7 +63,7 @@ export function VeilleSection() {
                 </dl>
               </section>
             ))}
-            <section className="flex flex-col gap-3 bg-paper p-6">
+            <section className="flex flex-col gap-3 bg-panel p-6">
               <h4 className="font-hand text-bubble-sm uppercase text-ink">Compétences mobilisées</h4>
               <TagList items={article.competences} />
               <p className="mt-auto text-body text-ink">{article.conclusion}</p>

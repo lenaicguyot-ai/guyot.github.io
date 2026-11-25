@@ -10,7 +10,7 @@ export function ContactSection() {
   return (
     <SectionLayout id="contact" number="08" title="Travaillons ensemble">
       <Reveal stagger className="grid gap-gutter md:grid-cols-[2fr_1fr]">
-        <Panel variant="paper" bodyClassName="gap-6 p-6 md:p-10">
+        <Panel bodyClassName="gap-6 p-6 md:p-10">
           <p className="text-subtitle text-ink">Une opportunité, un projet, une question sur mon parcours ? Écris-moi.</p>
           <div className="flex flex-wrap gap-gutter">
             <ButtonLink variant="accent" href={`mailto:${profil.email}`}>

@@ -12,8 +12,12 @@ export function EntrepriseSection() {
         <Panel title={entreprise.nom}>
           <p className="text-body text-ink">{entreprise.description}</p>
         </Panel>
-        <Panel title="Mon rôle" variant="paper">
-          <p className="text-body text-ink">{entreprise.role}</p>
+        <Panel title="Mon rôle">
+          {entreprise.role.map((r) => (
+            <p key={r} className="text-body text-ink">
+              {r}
+            </p>
+          ))}
         </Panel>
       </Reveal>
       <h3 className="mb-4 mt-10 font-hand text-bubble uppercase text-ink">Outils et pratiques</h3>

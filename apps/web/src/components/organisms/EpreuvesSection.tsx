@@ -30,7 +30,7 @@ export function EpreuvesSection() {
               onClick={() => setFiltre(f.id)}
               className={cx(
                 'h-10 border-frame border-ink px-4 font-sans text-label font-bold uppercase',
-                filtre === f.id ? 'bg-ink text-panel' : 'bg-panel text-ink hover:bg-paper',
+                filtre === f.id ? 'bg-ink text-panel' : 'bg-panel text-ink hover:bg-blush',
               )}
             >
               {f.label}

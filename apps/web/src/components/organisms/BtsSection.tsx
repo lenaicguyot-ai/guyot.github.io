@@ -8,7 +8,7 @@ export function BtsSection() {
   return (
     <SectionLayout id="bts" number="02" title="Le BTS SIO" subtitle="Services informatiques aux organisations">
       <Reveal stagger className="grid gap-gutter md:grid-cols-2">
-        <Panel className="md:col-span-2" variant="paper">
+        <Panel className="md:col-span-2">
           <p className="text-subtitle text-ink">{bts.intro}</p>
         </Panel>
         {bts.options.map((o, i) => (
