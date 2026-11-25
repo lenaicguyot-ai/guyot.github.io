@@ -10,7 +10,7 @@ Portfolio organisé selon la trame de l'école (Accueil, Épreuves, Atelier pro,
 | Langage | TypeScript (strict) | Erreurs détectées avant la mise en ligne |
 | Styles | Tailwind CSS 3 | Branché sur les tokens de la maquette (`src/styles/tokens.css`) |
 | Animations | Framer Motion | Apparition des cases, bulles, filtre des épreuves, transitions de pages |
-| 3D | Three.js | Baie serveur « au trait » dans l'accueil, chargée à part |
+| Animation | PixiJS 7 | Scène du katana et des pots dans l'accueil, chargée à part (la baie serveur est en 3D CSS) |
 | Organisation | Atomic design + monorepo npm workspaces | Composants réutilisables, contenu séparé du code |
 | Back-end | Aucun pour l'instant | Voir plus bas |
 
@@ -22,7 +22,7 @@ portfolio-react/
 │   └── src/components/
 │       ├── atoms/               Button, Tag, Halftone, TwoToneTitle, Icon, Illustrations, Reveal…
 │       ├── molecules/           Panel, SectionTitle, SpeechBubble, ChapterTile, InfoTile, Timeline…
-│       ├── organisms/           Nav, Floor, Hero, RackScene (3D), sections, ProjectDetail, SynthesisTable
+│       ├── organisms/           Nav, Floor, Hero, RackSpin (baie 3D CSS), KatanaScene (PixiJS), Sommaire, sections, ProjectDetail, SynthesisTable
 │       ├── templates/           PageLayout, SectionLayout
 │       └── pages/               HomePage, ProjectPage, SynthesisPage, NotFoundPage
 ├── packages/content/            Tous les textes du site (TypeScript typé)
