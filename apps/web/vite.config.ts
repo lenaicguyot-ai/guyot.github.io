@@ -1,0 +1,11 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// base './' : le site fonctionne quelle que soit l'adresse GitHub Pages (HashRouter côté React).
+export default defineConfig({
+  base: './',
+  plugins: [react()],
+  build: {
+    chunkSizeWarningLimit: 800,
+  },
+});
