@@ -1,0 +1,158 @@
+/* Portfolio — generated from tokens.json */
+:root, [data-theme="papier"] {
+  --paper: #ffd2da; /* Fond principal de page (papier rose). Source : deck, accent4. Textes autorisés dessus : ink 10,76:1, ink-soft 5,73:1, coral-text 4,63:1, teal-text 4,62:1, manga-gray 5,16:1. */
+  --panel: #ffffff; /* Fond des cases, cartes, champs et bulles. Source : deck lt1 et capture manga. Encre 14,59:1. */
+  --floor: #e5d8da; /* Sol du décor, pied de page, zones calmes. Source : deck dk2. Encre 10,54:1, ink-soft 5,61:1, coral-text 4,54:1, teal-text 4,52:1. */
+  --baseboard: #c9b9bc; /* Plinthe (bande de 14 px sur le sol), bandes épaisses. Source : deck lt2. Texte en ink uniquement (7,75:1) : ink-soft 4,13:1 échoue. */
+  --page-manga: #dbdbdb; /* Fond de page de la variante noir et blanc, derrière une grille de cases. Source : capture manga. Noir 15,17:1, manga-gray 5,06:1. */
+  --ink: #341e4d; /* Encre : texte, traits, cadres, illustrations. Source : deck accent2. 10,76:1 sur paper, 14,59:1 sur panel. */
+  --ink-soft: #5a4c70; /* Texte secondaire, légendes, métadonnées. Source : deck accent1. 5,73:1 sur paper, 7,77:1 sur panel. Jamais sur baseboard. */
+  --manga-black: #000000; /* Variante noir et blanc : traits et texte. Source : capture manga. 15,48:1 sur paper. */
+  --manga-gray: #595959; /* Variante noir et blanc : texte secondaire. Source : capture manga. 5,16:1 sur paper, 7,00:1 sur panel, 5,06:1 sur page-manga. */
+  --coral: #f78181; /* Accent décoratif : fond du bouton accent (texte ink 5,85:1), illustrations. Source : deck accent3. JAMAIS en texte : 1,84:1 sur paper. */
+  --teal: #3b9aad; /* Accent décoratif : montants de fenêtre, voyants, illustrations. Source : deck accent5. JAMAIS en texte ni comme fond de texte : 2,41:1 sur paper, ink dessus 4,46:1, blanc dessus 3,28:1. */
+  --coral-text: #a83a3f; /* Corail assombri (OKLCH, teinte conservée) pour le texte : dernier mot des titres, années, rangs, liens survolés, tags d'alerte. 4,63:1 sur paper, 6,28:1 sur panel, 4,54:1 sur floor. */
+  --teal-text: #046a7b; /* Turquoise assombri (OKLCH, teinte conservée) pour le texte : numéros de section, anneau de focus, tags « prévu ». 4,62:1 sur paper, 6,26:1 sur panel, 4,52:1 sur floor. */
+  --text: var(--ink); /* Couleur de texte par défaut (alias de ink). */
+  --text-muted: var(--ink-soft); /* Texte secondaire par défaut (alias de ink-soft). */
+  --border: var(--ink); /* Cadres de case, contours de bouton et de champ (alias de ink). */
+  --focus: var(--teal-text); /* Anneau de focus clavier, 3 px, décalé de 2 px (alias de teal-text). */
+  --accent-fill: var(--coral); /* Fond d'accent décoratif (alias de coral). Texte dessus : ink. */
+  --shadow-none: none; /* Valeur unique : pas d'ombre portée. */
+}
+:root {
+  --space-4: 4px; /* Pas dérivé : écart minimal (tag, texte serré). */
+  --space-8: 8px; /* Pas dérivé : écart entre label et contenu. */
+  --gutter: 10px; /* Gouttière entre cases et entre tuiles. Mesurée sur la capture manga. */
+  --space-16: 16px; /* Pas dérivé : écart entre éléments d'une case. */
+  --space-24: 24px; /* Pas dérivé : marge intérieure d'une case. */
+  --page-top: 45px; /* Haut de page avant le titre. Mesuré sur le deck (titre à y = 45 px). */
+  --page-margin: 76px; /* Marge latérale du contenu. Mesurée sur le deck (x = 76 px). */
+  --floor-height: 75px; /* Hauteur de la bande de sol en bas de page. Mesurée sur le deck (540 - 465). */
+  --baseboard-height: 14px; /* Hauteur de la plinthe au-dessus du sol. Mesurée sur le décor du deck. */
+  --radius-none: 0; /* Cases, boutons, champs, tags, tuiles. */
+  --radius-round: 50%; /* Bulles de dialogue, pastilles de rang, anneaux. */
+  --stroke-hair: 1px; /* Illustrations au trait, séparateurs de liste, tags. Deck : 9525 EMU. */
+  --stroke-icon: 1.25px; /* Contour d'icône. Deck : 11775 EMU. */
+  --stroke-frame: 2px; /* Cadres de case, boutons, champs, bulles. Deck : 19050 EMU. */
+  --stroke-focus: 3px; /* Anneau de focus (proposition, décalé de 2 px). */
+  --control-height: 44px; /* Hauteur des boutons et champs (cible tactile minimale). */
+  --halftone-pitch: 6px; /* Trame : pas de la grille de points (proposition, la capture est trop réduite pour être mesurée). */
+  --halftone-dot: 1px; /* Trame : rayon du point (proposition). */
+  --font-display: "Michroma", "Lato", sans-serif;
+  --font-sans: "Lato", system-ui, sans-serif;
+  --font-hand: "Patrick Hand", "Lato", cursive;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+  --text-display: 400 59px/1 var(--font-display); /* Titre de couverture. Deck : 44 pt. Majuscules. Dernier mot en coral-text. */
+  --text-number: 400 64px/1 var(--font-display); /* Chiffre géant. Deck : 48 pt. */
+  --text-section-number: 400 64px/1 var(--font-display); /* Numéro de section, en teal-text. Deck : 48 pt. */
+  --text-h1: 400 48px/1 var(--font-display); /* Titre de section. Deck : 36 pt. Majuscules, bicolore. */
+  --text-h2: 400 40px/1 var(--font-display); /* Titre de sous-section. Deck : 30 pt. Majuscules. */
+  --text-h3: 400 32px/1 var(--font-display); /* Titre de bloc, centré. Deck : 24 pt (style titre du masque). Majuscules. */
+  --text-bubble: 400 28px/1 var(--font-hand); /* Titres de case, grande bulle. Deck : Patrick Hand 21 pt. Majuscules. */
+  --text-bubble-sm: 400 21px/1 var(--font-hand); /* Navigation, petite bulle, légende de tuile. Taille reprise du pas 16 pt (sous-titre). Majuscules. */
+  --text-subtitle: 400 21px/1 var(--font-sans); /* Sous-titre, chapeau. Deck : 16 pt. */
+  --text-label: 700 15px/1 var(--font-sans); /* Titre d'item, bouton, label. Deck : Lato gras 11 pt. Majuscules. */
+  --text-body: 400 13px/1.15 var(--font-sans); /* Corps de texte. Deck : Lato 10 pt, interligne 115 %. */
+  --text-input: 400 16px/1.15 var(--font-sans); /* Texte saisi dans un champ. 16 px pour éviter le zoom des navigateurs mobiles (contrainte technique, pas une valeur des références). */
+  --text-caption: 700 11px/1 var(--font-sans); /* Légende, tag, métadonnée. Deck : Lato gras 8 pt. */
+  --text-code: 400 13px/1.15 var(--font-mono); /* Code et valeurs techniques. Proposition : aucune police de code dans les références. */
+}
+.display {
+  font-family: var(--font-display);
+  font-size: 59px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.number {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.section-number {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.bubble {
+  font-family: var(--font-hand);
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.bubble-sm {
+  font-family: var(--font-hand);
+  font-size: 21px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 21px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.input {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.caption {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: 0;
+}
