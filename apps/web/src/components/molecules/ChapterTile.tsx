@@ -23,7 +23,7 @@ export function ChapterTile({ to, code, badge, title, meta, resume }: ChapterTil
     <motion.article variants={caseVariants} initial="hidden" whileInView="show" viewport={{ once: true }} exit="hidden" layout className="h-full">
       <Link
         to={to}
-        className="group flex h-full flex-col border-frame border-ink bg-panel transition-colors hover:bg-paper"
+        className="group flex h-full flex-col border-frame border-ink bg-panel transition-colors hover:bg-blush"
       >
         <Halftone className="relative flex h-36 items-center justify-center border-b-frame border-ink">
           <motion.span

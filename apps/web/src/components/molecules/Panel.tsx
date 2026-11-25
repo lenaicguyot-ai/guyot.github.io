@@ -26,7 +26,7 @@ export function Panel({ children, title, variant = 'standard', className, bodyCl
   return (
     <Comp
       variants={caseVariants}
-      className={cx('flex flex-col border-frame border-ink', variant === 'paper' ? 'bg-paper' : 'bg-panel', className)}
+      className={cx('flex flex-col border-frame border-ink', variant === 'paper' ? 'bg-blush' : 'bg-panel', className)}
     >
       {variant === 'halftone' && <Halftone className="h-14 shrink-0 border-b-frame border-ink" />}
       {/* bodyClassName remplace la marge et l'écart par défaut (évite les conflits Tailwind). */}
