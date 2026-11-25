@@ -3,18 +3,18 @@ import type { Bloc, EtapeParcours, GroupeCompetences } from './types';
 export const profil = {
   prenom: 'Lénaïc',
   nom: 'Guyot',
-  tag: 'BTS SIO · option SISR · Alternance 2025-2027',
-  accroche:
-    "J'administre un parc informatique en entreprise et je documente chaque projet comme en production. Objectif : administrateur systèmes et réseaux.",
+  tag: 'BTS SIO · option SISR · alternance 2025-2027',
+  accroche: 'Futur administrateur systèmes et réseaux qui gère un parc informatique en entreprise.',
   bulle: 'Bienvenue dans mon parc !',
-  stats: [
-    { valeur: '2e année', label: 'BTS SIO SISR' },
-    { valeur: 'WAAT', label: 'Alternance' },
-    { valeur: 'H3 Hitema', label: 'École' },
-  ],
+  /** Case « Repères » à droite de l'accueil. `chiffre` s'affiche en grand (Michroma, turquoise). */
+  reperes: [
+    { chiffre: '2e', titre: 'Année BTS SIO SISR' },
+    { titre: 'WAAT', texte: 'Alternance' },
+    { titre: 'H3 Hitema', texte: 'École' },
+  ] as Array<{ chiffre?: string; titre: string; texte?: string }>,
   presentation: [
     "Étudiant en 2e année de BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), je me forme aux systèmes, aux réseaux et à la cybersécurité. Mon alternance m'apporte des compétences concrètes en administration, en support et en sécurité.",
-    "Objectif : évoluer vers un poste d'administrateur systèmes et réseaux, puis poursuivre en Bachelor et Bac+5.",
+    "J'aimerais poursuivre en Bachelor et évoluer vers un poste d'administrateur systèmes et réseaux.",
   ],
   email: 'lenaicguyot@gmail.com',
   linkedin: 'https://www.linkedin.com/in/l%C3%A9na%C3%AFc-guyot-9a80b9306',
@@ -28,8 +28,8 @@ export const formation: EtapeParcours[] = [
 
 export const experience: EtapeParcours[] = [
   { periode: '2025-2027', titre: 'Alternance · WAAT · support et gestion de parc' },
-  { periode: '2021-2024', titre: 'Stage · Equinix · machine virtuelle, réseau, programmation' },
-  { periode: '2021-2024', titre: 'Stage · WAAT · technicien support' },
+  { periode: '2024', titre: 'Stage · WAAT · technicien support' },
+  { periode: '2023', titre: 'Stage · Equinix · machine virtuelle, réseau, programmation' },
 ];
 
 export const bts = {
@@ -57,37 +57,40 @@ export const entreprise = {
   nom: 'WAAT',
   description:
     'Opérateur français de bornes de recharge pour véhicules électriques (IRVE). Environnement Microsoft 365, Entra ID et Intune.',
-  role:
-    "Support utilisateurs et gestion du parc : tickets (GLPI), comptes et droits (Entra ID), déploiement de configurations et de scripts avec Intune, automatisation avec Power Automate, interventions sur l'infrastructure réseau.",
+  role: [
+    "Je réalise du support informatique utilisateurs de niveau 0 à 1, notamment la gestion des droits d'accès et des comptes SharePoint et Entra ID.",
+    "J'assure également la gestion du parc informatique (ordinateurs, téléphones mobiles et lignes téléphoniques).",
+    "Je contribue à l'automatisation des tâches de support à l'aide de scripts, que je déploie via Intune.",
+  ],
 };
 
 export const competences: GroupeCompetences[] = [
   {
     titre: 'Support',
     icone: 'terminal',
-    items: ['GLPI', 'Gestion de tickets', 'Comptes et droits', 'Microsoft 365', 'Teams', 'Sellsy', 'Préparation de postes'],
+    items: ['Gestion de tickets', 'Comptes et droits', 'Microsoft 365', 'Teams', 'Sellsy', 'Préparation de postes'],
   },
   {
     titre: 'Systèmes',
     icone: 'baie',
-    items: ['Entra ID', 'Intune', 'Power Automate', 'PowerShell', 'Microsoft Forms', 'Debian', 'Machines virtuelles'],
+    items: ['Entra ID', 'Intune', 'Power Automate', 'PowerShell', 'Microsoft Forms'],
   },
   {
     titre: 'Réseau',
     icone: 'reseau',
-    items: ['Cisco IOS', 'VLAN', 'Routage', 'Câblage RJ45', 'Infrastructure réseau'],
+    items: ['Câblage RJ45'],
   },
   {
     titre: 'Sécurité',
     icone: 'bouclier',
-    items: ['Accès conditionnel', 'Conformité Intune', 'EDR / XDR', 'RGPD', 'Veille cybersécurité'],
+    items: ['Accès conditionnel', 'Conformité Intune', 'EDR / XDR', 'Zscaler', 'RGPD', 'Veille cybersécurité'],
   },
 ];
 
 export const ecole = {
   nom: 'H3 Hitema',
   texte:
-    "École d'informatique en alternance à Issy-les-Moulineaux. Rythme : 2 jours à l'école, 3 jours en entreprise. Ateliers professionnels : GLPI, réseau Cisco.",
+    "École d'informatique en alternance, à deux pas de Montparnasse (Paris). Rythme : 2 jours à l'école, 3 jours en entreprise. Ateliers professionnels : GLPI, réseau Cisco (VLAN) et routage Cisco.",
 };
 
 export const certifications = {
