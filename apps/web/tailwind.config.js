@@ -17,6 +17,7 @@ export default {
     extend: {
       colors: {
         paper: 'var(--paper)',
+        blush: 'var(--blush)',
         panel: 'var(--panel)',
         floor: 'var(--floor)',
         baseboard: 'var(--baseboard)',
