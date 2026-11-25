@@ -1,6 +1,6 @@
 # Portfolio
 
-Design system du portfolio BTS SIO SISR de Lénaïc Guyot : une page de manga posée dans une chambre rose. Cases cerclées d'encre violette, bulles de dialogue, trames de points, fenêtres à montants turquoise et sol en bas de page.
+Design system du portfolio BTS SIO SISR de Lénaïc Guyot : une page de manga posée dans une chambre claire. Cases cerclées d'encre violette, bulles de dialogue, trames de points, fenêtres à montants turquoise et sol en bas de page.
 
 Il reprend le **style** de deux références (un modèle de présentation « portfolio d'illustrateur manga » et une page d'accueil de site de lecture manga), jamais leur **identité** : aucun logo, nom, personnage ou illustration n'en est copié.
 
@@ -8,7 +8,7 @@ Il reprend le **style** de deux références (un modèle de présentation « por
 
 1. **La page est une planche.** Le contenu se range dans des cases rectangulaires cerclées d'encre, séparées par une gouttière serrée (`--gutter`). On lit une case à la fois.
 2. **L'encre fait la profondeur.** Pas d'ombre, pas de dégradé : des aplats, un trait de 2 px pour les cadres, 1 px pour le dessin, et des trames de points pour donner du volume.
-3. **Un décor, pas un fond.** Le rose (`--paper`) est le mur, le sol (`--floor`) et sa plinthe (`--baseboard`) ferment la page en bas, les montants turquoise (`--teal`) encadrent les fenêtres.
+3. **Un décor, pas un fond.** Le blanc cassé rosé (`--paper`) est le mur, le rose (`--blush`) colore les cases mises en avant et les trames, le sol (`--floor`) et sa plinthe (`--baseboard`) ferment la page en bas, les montants turquoise (`--teal`) encadrent les fenêtres.
 4. **Deux voix typographiques.** Michroma, large et technique, pour les titres et les chiffres ; Patrick Hand, lettrage à la main, pour ce qui « parle » (bulles, navigation, titres de case). Lato porte le texte courant.
 5. **Lisible d'abord.** Tout texte atteint 4,5:1. Les accents d'origine (corail, turquoise) restent décoratifs ; leurs versions assombries portent le texte.
 
@@ -27,7 +27,8 @@ Il reprend le **style** de deux références (un modèle de présentation « por
 
 | Rôle | Token | Valeur | Source |
 |---|---|---|---|
-| Mur, fond de page | `--paper` | `#FFD2DA` | deck |
+| Mur, fond de page | `--paper` | `#FFF4F6` | choix utilisateur (25 % de blush dans du blanc) |
+| Rose papier : case papier, trame, pastilles | `--blush` | `#FFD2DA` | deck |
 | Cases, cartes, champs | `--panel` | `#FFFFFF` | deck, capture |
 | Sol, pied de page | `--floor` | `#E5D8DA` | deck |
 | Plinthe | `--baseboard` | `#C9B9BC` | deck |
@@ -43,17 +44,17 @@ Il reprend le **style** de deux références (un modèle de présentation « por
 
 Alias sémantiques : `--text` (ink), `--text-muted` (ink-soft), `--border` (ink), `--focus` (teal-text), `--accent-fill` (coral).
 
-**Corrections de contraste signalées.** Dans les références, le corail sert de couleur de texte (dernier mot des titres) et le turquoise aussi (numéros de section). Sur le rose, ils n'atteignent que 1,84:1 et 2,41:1. Les tokens `--coral-text` et `--teal-text` gardent la même teinte (OKLCH, seule la luminance baisse) et atteignent 4,63:1 et 4,62:1 sur `--paper`, plus de 6:1 sur `--panel`, et au moins 4,5:1 sur `--floor`.
+**Corrections de contraste signalées.** Dans les références, le corail sert de couleur de texte (dernier mot des titres) et le turquoise aussi (numéros de section). Sur le rose `--blush`, ils n'atteignent que 1,84:1 et 2,41:1 (2,32:1 et 3,04:1 sur le fond `--paper`). Les tokens `--coral-text` et `--teal-text` gardent la même teinte (OKLCH, seule la luminance baisse) et atteignent 5,84:1 et 5,82:1 sur `--paper`, 4,63:1 et 4,62:1 sur `--blush`, plus de 6:1 sur `--panel`, et au moins 4,5:1 sur `--floor`.
 
-| Texte sur | paper | panel | floor | baseboard |
-|---|---|---|---|---|
-| ink | 10,76 | 14,59 | 10,54 | 7,75 |
-| ink-soft | 5,73 | 7,77 | 5,61 | 4,13 ✕ |
-| coral-text | 4,63 | 6,28 | 4,54 | ✕ |
-| teal-text | 4,62 | 6,26 | 4,52 | ✕ |
-| manga-gray | 5,16 | 7,00 | 5,06 | 3,72 ✕ |
-| coral | 1,84 ✕ | 2,50 ✕ | 1,80 ✕ | ✕ |
-| teal | 2,41 ✕ | 3,28 ✕ | 2,37 ✕ | ✕ |
+| Texte sur | paper | blush | panel | floor | baseboard |
+|---|---|---|---|---|---|
+| ink | 13,57 | 10,76 | 14,59 | 10,54 | 7,75 |
+| ink-soft | 7,22 | 5,73 | 7,77 | 5,61 | 4,13 ✕ |
+| coral-text | 5,84 | 4,63 | 6,28 | 4,54 | ✕ |
+| teal-text | 5,82 | 4,62 | 6,26 | 4,52 | ✕ |
+| manga-gray | 6,51 | 5,16 | 7,00 | 5,06 | 3,72 ✕ |
+| coral | 2,32 ✕ | 1,84 ✕ | 2,50 ✕ | 1,80 ✕ | ✕ |
+| teal | 3,04 ✕ | 2,41 ✕ | 3,28 ✕ | 2,37 ✕ | ✕ |
 
 Fonds pleins portant du texte : `--ink` sous texte blanc (14,59:1), `--coral` sous texte `--ink` (5,85:1). Jamais de texte sur `--teal` (ink 4,46:1, blanc 3,28:1).
 
@@ -115,7 +116,7 @@ Aucun dans les références. Ne pas en ajouter.
 
 ```css
 .trame {
-  background-color: var(--paper);
+  background-color: var(--blush);
   background-image: radial-gradient(var(--ink) var(--halftone-dot), transparent calc(var(--halftone-dot) + 0.6px));
   background-size: var(--halftone-pitch) var(--halftone-pitch);
 }
@@ -188,6 +189,7 @@ Variante N&B : `--manga-black` sur `--panel`.
 ## Sources des valeurs
 
 - Thème du deck (`theme2.xml`) et diapo « Fonts & colors used » : les 7 couleurs, Michroma et Lato.
+- Fond `--paper` (`#FFF4F6`) : choix de l'utilisateur, un blanc cassé légèrement rosé à la place du rose du deck, qui devient `--blush`.
 - XML des diapos et masques : tailles (pt), interlignes (100 % et 115 %), approche (0), épaisseurs de trait (EMU), positions (marges), absence d'ombres et de dégradés.
 - Rendu des diapos et décor : échantillonnage des couleurs, hauteur de plinthe.
 - Capture manga (544 px de large) : `#FFFFFF`, `#DBDBDB`, `#000000`, `#595959`, gouttière.
