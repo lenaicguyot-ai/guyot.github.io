@@ -34,7 +34,7 @@ export function Tag({ children, variant = 'outline', className }: TagProps) {
 /** Pastille de rang (#1, #2…) en Michroma. */
 export function RankPill({ rank }: { rank: number }) {
   return (
-    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border-frame border-ink bg-paper font-display text-caption">
+    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border-frame border-ink bg-blush font-display text-caption">
       #{rank}
     </span>
   );
