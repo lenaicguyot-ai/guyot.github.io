@@ -1,18 +1,19 @@
 /* Portfolio — generated from tokens.json */
 :root, [data-theme="papier"] {
-  --paper: #ffd2da; /* Fond principal de page (papier rose). Source : deck, accent4. Textes autorisés dessus : ink 10,76:1, ink-soft 5,73:1, coral-text 4,63:1, teal-text 4,62:1, manga-gray 5,16:1. */
+  --paper: #fff4f6; /* Fond principal de page, blanc cassé légèrement rosé (choix de l'utilisateur : 25 % de blush dans du blanc). Textes autorisés dessus : ink 13,57:1, ink-soft 7,22:1, coral-text 5,84:1, teal-text 5,82:1, manga-gray 6,51:1. */
+  --blush: #ffd2da; /* Rose papier d'origine (deck, accent4), réservé aux éléments rosés : case « papier », base de la trame, pastilles. Plus le fond de page. Encre 10,76:1, ink-soft 5,73:1, coral-text 4,63:1, teal-text 4,62:1. */
   --panel: #ffffff; /* Fond des cases, cartes, champs et bulles. Source : deck lt1 et capture manga. Encre 14,59:1. */
   --floor: #e5d8da; /* Sol du décor, pied de page, zones calmes. Source : deck dk2. Encre 10,54:1, ink-soft 5,61:1, coral-text 4,54:1, teal-text 4,52:1. */
   --baseboard: #c9b9bc; /* Plinthe (bande de 14 px sur le sol), bandes épaisses. Source : deck lt2. Texte en ink uniquement (7,75:1) : ink-soft 4,13:1 échoue. */
   --page-manga: #dbdbdb; /* Fond de page de la variante noir et blanc, derrière une grille de cases. Source : capture manga. Noir 15,17:1, manga-gray 5,06:1. */
-  --ink: #341e4d; /* Encre : texte, traits, cadres, illustrations. Source : deck accent2. 10,76:1 sur paper, 14,59:1 sur panel. */
-  --ink-soft: #5a4c70; /* Texte secondaire, légendes, métadonnées. Source : deck accent1. 5,73:1 sur paper, 7,77:1 sur panel. Jamais sur baseboard. */
-  --manga-black: #000000; /* Variante noir et blanc : traits et texte. Source : capture manga. 15,48:1 sur paper. */
-  --manga-gray: #595959; /* Variante noir et blanc : texte secondaire. Source : capture manga. 5,16:1 sur paper, 7,00:1 sur panel, 5,06:1 sur page-manga. */
-  --coral: #f78181; /* Accent décoratif : fond du bouton accent (texte ink 5,85:1), illustrations. Source : deck accent3. JAMAIS en texte : 1,84:1 sur paper. */
-  --teal: #3b9aad; /* Accent décoratif : montants de fenêtre, voyants, illustrations. Source : deck accent5. JAMAIS en texte ni comme fond de texte : 2,41:1 sur paper, ink dessus 4,46:1, blanc dessus 3,28:1. */
-  --coral-text: #a83a3f; /* Corail assombri (OKLCH, teinte conservée) pour le texte : dernier mot des titres, années, rangs, liens survolés, tags d'alerte. 4,63:1 sur paper, 6,28:1 sur panel, 4,54:1 sur floor. */
-  --teal-text: #046a7b; /* Turquoise assombri (OKLCH, teinte conservée) pour le texte : numéros de section, anneau de focus, tags « prévu ». 4,62:1 sur paper, 6,26:1 sur panel, 4,52:1 sur floor. */
+  --ink: #341e4d; /* Encre : texte, traits, cadres, illustrations. Source : deck accent2. 13,57:1 sur paper, 14,59:1 sur panel. */
+  --ink-soft: #5a4c70; /* Texte secondaire, légendes, métadonnées. Source : deck accent1. 7,22:1 sur paper, 7,77:1 sur panel. Jamais sur baseboard. */
+  --manga-black: #000000; /* Variante noir et blanc : traits et texte. Source : capture manga. 19,52:1 sur paper. */
+  --manga-gray: #595959; /* Variante noir et blanc : texte secondaire. Source : capture manga. 6,51:1 sur paper, 7,00:1 sur panel, 5,06:1 sur page-manga. */
+  --coral: #f78181; /* Accent décoratif : fond du bouton accent (texte ink 5,85:1), illustrations. Source : deck accent3. JAMAIS en texte : 2,32:1 sur paper, 1,84:1 sur blush. */
+  --teal: #3b9aad; /* Accent décoratif : montants de fenêtre, voyants, illustrations. Source : deck accent5. JAMAIS en texte ni comme fond de texte : 3,04:1 sur paper, 2,41:1 sur blush, ink dessus 4,46:1, blanc dessus 3,28:1. */
+  --coral-text: #a83a3f; /* Corail assombri (OKLCH, teinte conservée) pour le texte : dernier mot des titres, années, rangs, liens survolés, tags d'alerte. 5,84:1 sur paper, 4,63:1 sur blush, 6,28:1 sur panel, 4,54:1 sur floor. */
+  --teal-text: #046a7b; /* Turquoise assombri (OKLCH, teinte conservée) pour le texte : numéros de section, anneau de focus, tags « prévu ». 5,82:1 sur paper, 4,62:1 sur blush, 6,26:1 sur panel, 4,52:1 sur floor. */
   --text: var(--ink); /* Couleur de texte par défaut (alias de ink). */
   --text-muted: var(--ink-soft); /* Texte secondaire par défaut (alias de ink-soft). */
   --border: var(--ink); /* Cadres de case, contours de bouton et de champ (alias de ink). */
